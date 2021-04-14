@@ -1,0 +1,6 @@
+打包：
+mvn clean package -Dmaven.test.skip=true
+
+部署代码：
+nohup java -jar cnbm-interface-1.0-SNAPSHOT.jar --server.port=6004 &
+

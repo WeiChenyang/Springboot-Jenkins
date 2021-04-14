@@ -1,0 +1,61 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CNBM 接口管理平台</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" th:href="@{assets/js/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{assets/js/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{assets/vendors/mdi/css/materialdesignicons.min.css}">
+    <link rel="stylesheet" th:href="@{assets/vendors/css/vendor.bundle.base.css}">
+    <link rel="stylesheet" th:href="@{assets/css/style.css}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" th:href="@{assets/images/intf_icon.ico}"/>
+
+</head>
+<body>
+<!-- plugins:js -->
+<script th:src="@{assets/vendors/js/vendor.bundle.base.js}"></script>
+<!-- inject:js -->
+<script th:src="@{assets/js/off-canvas.js}"></script>
+<script th:src="@{assets/js/hoverable-collapse.js}"></script>
+<script th:src="@{assets/js/misc.js}"></script>
+
+
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row flex-grow">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left p-5">
+                        <div class="brand-logo">
+                            <img th:src="@{assets/images/intf_logo.png}">
+                        </div>
+                        <h4 style="text-align: center;font-weight: bolder;">接口管理平台</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" id="name"
+                                   placeholder="name" >
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="password"
+                                   placeholder="password" >
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
+                                    id="login_btn" onclick="login()">登 陆
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    <script th:src="@{businessjs/login.js}"></script>
+</div>
+
+</body>
+</html>

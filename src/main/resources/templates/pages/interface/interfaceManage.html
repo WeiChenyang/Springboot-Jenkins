@@ -1,0 +1,212 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="content-wrapper" th:fragment="interfaceManage">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">接口管理</h4>
+                    <!--<p class="card-description"> Add class <code>.table-striped</code></p>-->
+                    <p>
+                        <button class="btn btn-gradient-info btn-icon-text btn-sm" type="button" data-toggle="collapse"
+                                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="mdi mdi-account-search btn-icon-prepend"></i> 查询信息
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <div class="row">
+                                <label class="col-sm-1 col-form-label-sm">编码</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="query_code" name="code" class="form-control form-control-sm"/>
+                                </div>
+                                <label class="col-sm-1 col-form-label-sm">名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="query_name" name="name" class="form-control form-control-sm"/>
+                                </div>
+                                <label class="col-sm-1 col-form-label-sm">生产者名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="query_inputName" name="inputName"
+                                           class="form-control form-control-sm"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-1 col-form-label-sm">消费者名称</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="query_outputName" name="outputName"
+                                           class="form-control form-control-sm"/>
+                                </div>
+                                <label class="col-sm-1 col-form-label-sm">状态</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control form-control-sm" id="query_status" name="status">
+                                        <option value="">请选择</option>
+                                        <option value="0">启用</option>
+                                        <option value="1">禁用</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-1 col-form-label-sm"></label>
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-gradient-primary btn-icon-text btn-sm"
+                                            onclick="queryInfo()">
+                                        <i class="mdi mdi mdi-magnify btn-icon-prepend"></i> 查询
+                                    </button>
+                                    <button type="button" class="btn btn-gradient-danger btn-icon-text btn-sm"
+                                            onclick="clearInfo()" style="padding-left: 5px">
+                                        <i class="mdi mdi mdi mdi-delete-sweep btn-icon-prepend"></i> 清空查询条件
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="interfaceTableToolbar">
+                        <button type="button" class="btn btn-gradient-success btn-icon-text btn-sm"
+                                onclick="newView()">
+                            <i class="mdi mdi-file btn-icon-prepend"></i> 新建
+                        </button>
+                        <button type="button" class="btn btn-gradient-warning btn-icon-text btn-sm"
+                                onclick="del(null)">
+                            <i class="mdi mdi-file btn-icon-prepend"></i> 删除
+                        </button>
+                    </div>
+                    <table id="interfaceTable"></table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-xl" id="interfaceManageNew" data-backdrop="static"
+             tabindex="-1" role="dialog" aria-labelledby="interfaceManageNewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="interfaceManageNewModalLabel">接口管理-新建</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">基本信息</h4>
+                                <form class="form-sample" action="#" id="interfaceForm" method="post">
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>接口编码</label>
+                                        <div class="col-sm-3">
+                                            <input type="hidden" id="cnbmIntf_id" name="id">
+                                            <input type="text" id="cnbmIntf_code" name="code"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>接口名称</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_name" name="name"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm"><span
+                                                style="color: red">*</span>状态</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control form-control-sm" id="cnbmIntf_status"
+                                                    name="status">
+                                                <option value="0">启用</option>
+                                                <option value="1">禁用</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm">是否重试</label>
+                                        <div class="col-sm-3">
+                                            <select class="form-control form-control-sm" id="cnbmIntf_isRetry"
+                                                    name="isRetry">
+                                                <option value="0">是</option>
+                                                <option value="1">否</option>
+                                            </select>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm">重试次数</label>
+                                        <div class="col-sm-3">
+                                            <input type="number" id="cnbmIntf_maxRetryCount" name="maxRetryCount"
+                                                   value="3" class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm">超时时间</label>
+                                        <div class="col-sm-3">
+                                            <input type="number" id="cnbmIntf_timeout" name="timeout" value="300000"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>生产者名称</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_inputName" name="inputName"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>生产者地址</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_inputUrl" name="inputUrl"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>生产者方法</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_inputMethodName" name="inputMethodName"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>消费者名称</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_outputName" name="outputName"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm">消费者方法名</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_outputMethodName" name="outputMethodName"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label-sm">消费者类名</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="cnbmIntf_outputClassName" name="outputClassName"
+                                                   class="form-control form-control-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm">IP访问设置</label>
+                                        <div class="col-sm-11">
+                                            <textarea maxlength="990" rows="2"
+                                                      style="overflow-y:auto;resize: vertical;margin-top:5px"
+                                                      class="form-control form-control-sm"
+                                                      id="cnbmIntf_ipAddress"
+                                                      name="ipAddress" placeholder="可设置多个，逗号分割，可以使用通配*,127.0.0.*"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>生产者参数格式</label>
+                                        <div class="col-sm-11">
+                                            <textarea maxlength="990" rows="4"
+                                                      style="overflow-y:auto;resize: vertical;margin-top:5px"
+                                                      class="form-control form-control-sm"
+                                                      id="cnbmIntf_inputParamFormat"
+                                                      name="inputParamFormat"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-1 col-form-label-sm"><span style="color: red">*</span>消费者参数格式</label>
+                                        <div class="col-sm-11">
+                                            <textarea maxlength="990" rows="4"
+                                                      style="overflow-y:auto;resize: vertical;margin-top:5px"
+                                                      class="form-control form-control-sm"
+                                                      id="cnbmIntf_outputFormat" name="outputFormat"></textarea>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="interfaceSave()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:src="@{businessjs/interface.js}"></script>
+    </div>
+</div>
+</html>

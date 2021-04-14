@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cnbm.intf.core.mapper.CnbmIntfLogMapper">
+    <select id="queryPage" resultType="com.cnbm.intf.core.model.CnbmIntfLog"
+            parameterType="com.cnbm.intf.core.common.utils.Query">
+        select
+            t.id,
+            t.intf_id,
+            t.status,
+            t.input_status,
+            t.output_status,
+            t.response_time_ext,
+            concat(SUBSTR(t.input_params,1,500),CASE WHEN LENGTH(t.input_params)>500 THEN '...' ELSE '' END) AS input_params,
+            concat(SUBSTR(t.output_params,1,500),CASE WHEN LENGTH(t.output_params)>500 THEN '...' ELSE '' END) AS output_params,
+            concat(SUBSTR(t.failed_reason,1,500),CASE WHEN LENGTH(t.failed_reason)>500 THEN '...' ELSE '' END) AS failed_reason,
+            concat(SUBSTR(t.input_return_val,1,500),CASE WHEN LENGTH(t.input_return_val)>500 THEN '...' ELSE '' END) AS input_return_val,
+            t.created_date,
+            t.updated_date
+        from cnbm_intf_log t
+        <where>
+            t.intf_id=#{params.intfId}
+            <if test="null!=params.inputParams and params.inputParams!=''">and instr(t.input_params,#{params.inputParams})>0</if>
+            <if test="null!=params.inputReturnVal and params.inputReturnVal!=''">and instr(t.input_return_val,#{params.inputReturnVal})>0</if>
+            <if test="null!=params.outputParams and params.outputParams!=''">and instr(t.output_params,#{params.outputParams})>0</if>
+            <if test="null!=params.createdDate and params.createdDate!=''">and TO_DAYS(t.created_date)=TO_DAYS(#{params.createdDate})</if>
+            <if test="null!=params.status and params.status!=''">and t.status=#{params.status}</if>
+        </where>
+        order by
+        <choose>
+            <when test="params.sort=='status'">t.status</when>
+            <when test="params.sort=='inputStatus'">t.input_status</when>
+            <when test="params.sort=='outputStatus'">t.output_status</when>
+            <when test="params.sort=='responseTimeExt'">t.response_time_ext</when>
+            <otherwise>t.created_date</otherwise>
+        </choose>
+        <choose>
+            <when test="params.order=='desc'">desc</when>
+            <otherwise>asc</otherwise>
+        </choose>
+    </select>
+    <select id="queryToDayCount" resultType="java.util.Map">
+        SELECT
+            l.intf_id,
+            l.intf_name,
+            COUNT( l.id ) AS count,
+            COUNT(if( l.status='${isFlag}' ,1,NULL) )as status,
+            COUNT(if( l.input_status='${isFlag}' ,1,NULL) )as input_status,
+            COUNT(if( l.output_status='${isFlag}' ,1,NULL) )as output_status
+        FROM
+            cnbm_intf_log l
+        WHERE
+            to_days( created_date ) = to_days( now( ) )
+        GROUP BY
+	        l.intf_id ,l.intf_name
+	    order by count desc limit 0,8
+    </select>
+    <select id="queryToDayFailCount" resultType="java.util.Map">
+        SELECT
+            count(l.id) as count,
+            COUNT(if( status='1' ,1,NULL) ) as status,
+            COUNT(if( input_status='1' ,1,NULL) ) as input_status,
+            COUNT(if( output_status='1' ,1,NULL) )as output_status
+        FROM
+            cnbm_intf_log l
+        WHERE to_days( created_date ) = to_days( now( ) )
+    </select>
+
+</mapper>

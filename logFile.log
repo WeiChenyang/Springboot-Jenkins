@@ -1,0 +1,50 @@
+2021-04-14 10:54:08.673 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - Starting CnbmInterfaceApplication on DESKTOP-IRM0K6C with PID 19884 (F:\VMware\Jenkins\Springboot-Jenkins\target\classes started by yang in F:\VMware\Jenkins\Springboot-Jenkins)
+2021-04-14 10:54:08.675 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - No active profile set, falling back to default profiles: default
+2021-04-14 10:54:08.726 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-14 10:54:08.727 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-14 10:54:09.718 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8011 (http)
+2021-04-14 10:54:09.728 [restartedMain] INFO  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8011"]
+2021-04-14 10:54:09.735 [restartedMain] INFO  o.a.c.core.StandardService - Starting service [Tomcat]
+2021-04-14 10:54:09.736 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-04-14 10:54:09.817 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/cnbm] - Initializing Spring embedded WebApplicationContext
+2021-04-14 10:54:09.817 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1090 ms
+2021-04-14 10:54:10.011 [restartedMain] INFO  o.s.b.w.servlet.RegistrationBean - Servlet CXFServlet was not registered (possibly already registered?)
+2021-04-14 10:54:10.099 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-04-14 10:54:10.325 [restartedMain] INFO  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-04-14 10:54:10.632 [restartedMain] INFO  o.a.c.w.s.f.ReflectionServiceFactoryBean - Creating Service {http://demo1.server.bs.cnbm.com}CommonService from class com.cnbm.bs.server.demo1.CommonService
+2021-04-14 10:54:10.918 [restartedMain] INFO  o.apache.cxf.endpoint.ServerImpl - Setting the server's publish address to be /api/commonService
+2021-04-14 10:54:11.023 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-14 10:54:11.105 [restartedMain] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2021-04-14 10:54:11.128 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [templates/index.html]
+2021-04-14 10:54:11.314 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-04-14 10:54:11.336 [restartedMain] INFO  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8011"]
+2021-04-14 10:54:11.350 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8011 (http) with context path '/cnbm'
+2021-04-14 10:54:11.352 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - Started CnbmInterfaceApplication in 3.001 seconds (JVM running for 3.78)
+2021-04-14 10:54:32.028 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - Starting CnbmInterfaceApplication on DESKTOP-IRM0K6C with PID 4432 (F:\VMware\Jenkins\Springboot-Jenkins\target\classes started by yang in F:\VMware\Jenkins\Springboot-Jenkins)
+2021-04-14 10:54:32.030 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - No active profile set, falling back to default profiles: default
+2021-04-14 10:54:32.079 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-14 10:54:32.079 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-14 10:54:32.962 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8011 (http)
+2021-04-14 10:54:32.970 [restartedMain] INFO  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8011"]
+2021-04-14 10:54:32.976 [restartedMain] INFO  o.a.c.core.StandardService - Starting service [Tomcat]
+2021-04-14 10:54:32.976 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.19]
+2021-04-14 10:54:33.052 [restartedMain] INFO  o.a.c.c.C.[.[localhost].[/cnbm] - Initializing Spring embedded WebApplicationContext
+2021-04-14 10:54:33.052 [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 972 ms
+2021-04-14 10:54:33.233 [restartedMain] INFO  o.s.b.w.servlet.RegistrationBean - Servlet CXFServlet was not registered (possibly already registered?)
+2021-04-14 10:54:33.306 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2021-04-14 10:54:33.510 [restartedMain] INFO  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2021-04-14 10:54:33.791 [restartedMain] INFO  o.a.c.w.s.f.ReflectionServiceFactoryBean - Creating Service {http://demo1.server.bs.cnbm.com}CommonService from class com.cnbm.bs.server.demo1.CommonService
+2021-04-14 10:54:34.032 [restartedMain] INFO  o.apache.cxf.endpoint.ServerImpl - Setting the server's publish address to be /api/commonService
+2021-04-14 10:54:34.127 [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-14 10:54:34.201 [restartedMain] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2021-04-14 10:54:34.219 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [templates/index.html]
+2021-04-14 10:54:34.400 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-04-14 10:54:34.420 [restartedMain] INFO  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8011"]
+2021-04-14 10:54:34.435 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8011 (http) with context path '/cnbm'
+2021-04-14 10:54:34.437 [restartedMain] INFO  c.cnbm.CnbmInterfaceApplication - Started CnbmInterfaceApplication in 2.68 seconds (JVM running for 3.377)
+2021-04-14 10:54:47.576 [http-nio-8011-exec-2] INFO  o.a.c.c.C.[.[localhost].[/cnbm] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-14 10:54:47.577 [http-nio-8011-exec-2] INFO  o.s.w.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-04-14 10:54:47.581 [http-nio-8011-exec-2] INFO  o.s.w.servlet.DispatcherServlet - Completed initialization in 4 ms
+2021-04-14 10:54:47.593 [http-nio-8011-exec-2] INFO  c.c.i.c.c.f.AuthenticationInterceptor - 请求地址：/cnbm/,IP:0:0:0:0:0:0:0:1,Token:null
+2021-04-14 10:54:47.839 [http-nio-8011-exec-2] ERROR c.c.i.c.c.f.AuthenticationInterceptor - 校验异常：java.lang.RuntimeException: 解密字符串[eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIzIiwidXNlclJvbGVzIjoiZXZlcnlvbmUsIGFkbWluIiwic3ViIjoiYWRtaW4iLCJjb2RlIjowLCJjcmVhdGVUaW1lIjoiMjAyMS0wNC0xNCAwOTo0OToxMiIsImxvZ2luTmFtZSI6ImFkbWluIiwidXNlck5hbWUiOiJhZG1pbiIsImV4cCI6MTYxODM5Mzc1MiwianRpIjoiODMxODI4NDMxODA5OTA4NzM2In0.GC8Az1j3UaegB3SDUngIYC93xnblDgcpRrI3LP26lVQclOS4cXNaiGRi8Hi_ZApMhDoIYfkYrp_cwpFo53sx-Q]时遇到异常
+2021-04-14 10:54:47.848 [http-nio-8011-exec-3] INFO  c.c.i.c.common.aspect.LogAspect - request start

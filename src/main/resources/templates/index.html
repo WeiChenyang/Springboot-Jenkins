@@ -1,0 +1,71 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CNBM 接口管理平台</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet"  th:href="@{assets/js/bootstrap.min.css}" />
+    <link rel="stylesheet"  th:href="@{assets/js/bootstrap-table.min.css}" />
+    <link rel="stylesheet"  th:href="@{assets/js/bootstrap-table-filter-control.min.css}" />
+    <link rel="stylesheet"  th:href="@{assets/js/font-awesome.css}" />
+    <link rel="stylesheet" th:href="@{assets/vendors/mdi/css/materialdesignicons.min.css}">
+    <link rel="stylesheet" th:href="@{assets/vendors/css/vendor.bundle.base.css}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" th:href="@{assets/css/style.css}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" th:href="@{assets/images/intf_icon.ico}"/>
+
+</head>
+<body>
+<!-- plugins:js -->
+<script th:src="@{assets/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{assets/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/js/bootstrap-table.min.js}"></script>
+<script th:src="@{assets/js/bootstrap-table-filter-control.min.js}"></script>
+<!-- endinject -->
+<!-- Plugin js f0r this page -->
+<script th:src="@{assets/vendors/chart.js/Chart.min.js}"></script>
+<!-- End plugin s for this page -->
+<!-- inject:js -->
+<script th:src="@{assets/js/off-canvas.js}"></script>
+<script th:src="@{assets/js/hoverable-collapse.js}"></script>
+<script th:src="@{assets/js/misc.js}"></script>
+<!-- endinject -->
+<!-- Custom js for this page -->
+<script th:src="@{assets/js/dashboard.js}"></script>
+<script th:src="@{assets/js/todolist.js}"></script>
+<!-- End custom js for this page -->
+<script th:src="@{assets/js/chart.js}"></script>
+<script th:src="@{assets/js/MessageBox.js}"></script>
+<script th:src="@{businessjs/CommonBus.js}"></script>
+
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+         th:include="partials/_navbar::_navbar"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" th:include="partials/_sidebar::_sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div th:replace="${pagePath}::${content}"></div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer" th:include="partials/_footer::_footer"></footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+</body>
+</html>

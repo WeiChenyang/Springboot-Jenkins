@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cnbm.intf.core.mapper.CnbmIntfMapper">
+
+    <select id="queryPage" resultType="com.cnbm.intf.core.model.CnbmIntf"
+            parameterType="com.cnbm.intf.core.common.utils.Query">
+        select * from cnbm_intf n
+        <where>
+            1=1
+            <if test="null!=params.code and params.code!=''">and instr(n.code,#{params.code})>0</if>
+            <if test="null!=params.name and params.name!=''">and instr(n.name,#{params.name})>0</if>
+            <if test="null!=params.inputName and params.inputName!=''">and instr(n.input_name,#{params.inputName})>0</if>
+            <if test="null!=params.inputUrl and params.inputUrl!=''">and instr(n.input_url,#{params.inputUrl})>0</if>
+            <if test="null!=params.outputName and params.outputName!=''">and instr(n.output_name,#{params.outputName})>0</if>
+            <if test="null!=params.outputUrl and params.outputUrl!=''">and n.output_url=#{params.outputUrl}</if>
+            <if test="null!=params.status and params.status!=''">and n.status=#{params.status}</if>
+        </where>
+        order by
+        <choose>
+            <when test="params.sort=='name'">n.name</when>
+            <when test="params.sort=='code'">n.code</when>
+            <when test="params.sort=='inputName'">n.input_name</when>
+            <when test="params.sort=='inputUrl'">n.input_url</when>
+            <when test="params.sort=='outputName'">n.output_name</when>
+            <otherwise>n.updated_date</otherwise>
+        </choose>
+        <choose>
+            <when test="params.order=='desc'">desc</when>
+            <otherwise>asc</otherwise>
+        </choose>
+    </select>
+    <select id="countOutProject" resultType="java.util.Map">
+        select t.output_name ,count(l.id) as count from
+        cnbm_intf t inner join cnbm_intf_log l on t.id=l.intf_id
+        GROUP BY t.output_name
+    </select>
+</mapper>
